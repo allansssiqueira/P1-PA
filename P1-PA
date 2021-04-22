@@ -1,0 +1,53 @@
+#include <stdio.h>
+#include <string.h>
+#include <iostream>
+
+int main()
+{
+	char entrada[1000];
+	char saida[1000];
+	char caractere[1];
+	char numcaracteres[3];
+	
+	int x=0;
+	int c=0;
+	
+	// inicializa variaveis principais
+  for(x=0; x<1000; x++)
+	{
+	  saida[x]=' ';
+  }
+
+	// obtem a entrada a ser processada
+	std::cout << "Digite a entrada a ser codificada:" << std::endl;
+	std::cin >> entrada;
+	
+	for(x=0; entrada[x]!='\0'; x++)
+	{
+		// inicicializa variaveis auxiliares
+		c=1;
+		caractere[1]=entrada[x];
+		
+		// contabiliza os proximos caracteres semelhantes
+		while (entrada[x]!='\0' && entrada[x+1]==entrada[x])
+		{
+			c++;
+			x++;
+		}
+		
+		// montagem da string de resultado
+		if (c==1)
+		{
+			strcat(saida, caractere);
+    }
+		else 
+		{
+			sprintf(numcaracteres,"%d", c);
+			strcat(saida, numcaracteres);
+			strcat(saida, caractere);
+		}
+	}
+  
+    	// Apresenta o resultado final.
+	printf("%s", saida);
+}
